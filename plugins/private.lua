@@ -2,8 +2,8 @@ local function do_keybaord_credits()
 	local keyboard = {}
     keyboard.inline_keyboard = {
     	{
-    		{text = 'Channel', url = 'https://telegram.me/'..config.channel:gsub('@', '')},
-    		{text = 'GitHub', url = 'https://github.com/RememberTheAir/GroupButler'},
+    		{text = 'کانال ما', url = 'https://telegram.me/'..config.channel:gsub('@', '')},
+    		{text = 'سازنده ربات', url = 'https://github.com/RememberTheAir/GroupButler'},
     		{text = 'Rate me!', url = 'https://telegram.me/storebot?start='..bot.username},
 		}
 	}
@@ -15,7 +15,7 @@ local action = function(msg, blocks, ln)
     if not(msg.chat.type == 'private') then return end
     
 	if blocks[1] == 'ping' then
-		api.sendMessage(msg.from.id, '*Pong!*', true)
+		api.sendMessage(msg.from.id, '*ربات آنلاین است*', true)
 	end
 	if blocks[1] == 'strings' then
 		if not blocks[2] then
@@ -48,9 +48,9 @@ local action = function(msg, blocks, ln)
 		if msg.chat.type ~= 'private' then
         	return
     	end
-    	local text = 'This command *has been replaced!*\n\nNow you can start your message with an ! to communicate with the bot owner. Example:\n_!hello, how are you?_'
+    	local text = ''
     	if config.help_group and config.help_group ~= '' then
-    		text = text..'\n\nYou can also join the discussion group to ask your question/report a bug. You can join with [this link]('..config.help_group..')'
+    		text = text..''
     	end
     	api.sendMessage(msg.chat.id, text, true)
     end
